@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+span.pkw-blue {
+	color: blue
+}
+
+div.blackbox {
+	border-color: black;
+	border-width: 2;
+	border-style: solid
+}
