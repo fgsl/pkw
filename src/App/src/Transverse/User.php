@@ -21,12 +21,21 @@ class User
         $sessionManager->getStorage()->user = self::getInstance($container);        
     }
 
-    public static function getInstance(ContainerInterface $container = null)
+    public static function getInstance(ContainerInterface $container = null):User
     {
         if (self::$instance == null) {
             self::$instance = new User($container);
         }
         return self::$instance;
+    }
+    
+    public static function isAuthorized(string $username, string $password, ContainerInterface $container):bool
+    {
+        $credentials = include APP_ROOT . '/data/security/credentials.php';
+        if (array_key_exists($username, $credentials['roles'])){
+            return $credentials['roles'][$username] == $password;
+        }
+        return false;
     }
 
     private function __construct(ContainerInterface $container = null)

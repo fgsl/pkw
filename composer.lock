@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "02dd757aaea480b1f3e897b8649b1ec3",
+    "content-hash": "52a17d462e0a68a7082b677f47eff541",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -95,16 +95,16 @@
         },
         {
             "name": "fgsl/kubectl",
-            "version": "1.1.1",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fgsl/kubectl.git",
-                "reference": "9efda447e8201dd6f43c5741b5482046a1942daa"
+                "reference": "eaf8b2e965cae0adda3569649eaac13c204c5ccc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fgsl/kubectl/zipball/9efda447e8201dd6f43c5741b5482046a1942daa",
-                "reference": "9efda447e8201dd6f43c5741b5482046a1942daa",
+                "url": "https://api.github.com/repos/fgsl/kubectl/zipball/eaf8b2e965cae0adda3569649eaac13c204c5ccc",
+                "reference": "eaf8b2e965cae0adda3569649eaac13c204c5ccc",
                 "shasum": ""
             },
             "require": {
@@ -131,7 +131,7 @@
                 "kubectl",
                 "layer"
             ],
-            "time": "2019-09-04T18:33:52+00:00"
+            "time": "2019-09-06T11:59:03+00:00"
         },
         {
             "name": "fig/http-message-util",
@@ -2078,16 +2078,16 @@
         },
         {
             "name": "zendframework/zend-escaper",
-            "version": "2.6.0",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-escaper.git",
-                "reference": "31d8aafae982f9568287cb4dce987e6aff8fd074"
+                "reference": "3801caa21b0ca6aca57fa1c42b08d35c395ebd5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-escaper/zipball/31d8aafae982f9568287cb4dce987e6aff8fd074",
-                "reference": "31d8aafae982f9568287cb4dce987e6aff8fd074",
+                "url": "https://api.github.com/repos/zendframework/zend-escaper/zipball/3801caa21b0ca6aca57fa1c42b08d35c395ebd5f",
+                "reference": "3801caa21b0ca6aca57fa1c42b08d35c395ebd5f",
                 "shasum": ""
             },
             "require": {
@@ -2119,7 +2119,7 @@
                 "escaper",
                 "zf"
             ],
-            "time": "2018-04-25T15:48:53+00:00"
+            "time": "2019-09-05T20:03:20+00:00"
         },
         {
             "name": "zendframework/zend-eventmanager",

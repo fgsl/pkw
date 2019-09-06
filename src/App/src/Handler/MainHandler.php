@@ -17,6 +17,8 @@ use Zend\Expressive\Template\TemplateRendererInterface;
 use Psr\Container\ContainerInterface;
 use App\Transverse\User;
 use Zend\Session\SessionManager;
+use Zend\Diactoros\Response\RedirectResponse;
+use Zend\Expressive\Router\RouterInterface;
 
 class MainHandler implements RequestHandlerInterface
 {
@@ -31,9 +33,11 @@ class MainHandler implements RequestHandlerInterface
 
     public function __construct(
         ContainerInterface $container,
-        ?TemplateRendererInterface $template = null
+        RouterInterface $router,
+        TemplateRendererInterface $template = null
     ) {
         $this->container     = $container;
+        $this->router        = $router;
         $this->template      = $template;
     }
 
@@ -41,6 +45,9 @@ class MainHandler implements RequestHandlerInterface
     {   
         $data = [];
         $sessionManager = $this->container->get(SessionManager::class);
+        if (!isset($sessionManager->getStorage()->user)){
+            return new RedirectResponse($this->router->generateUri('home'));
+        }
         $data['user'] = $sessionManager->getStorage()->user;
         return new HtmlResponse($this->template->render('app::main', $data));
     }

@@ -13,13 +13,15 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Zend\Expressive\Template\TemplateRendererInterface;
 
 use function get_class;
+use Zend\Expressive\Router\RouterInterface;
 
 class MainHandlerFactory
 {
     public function __invoke(ContainerInterface $container) : RequestHandlerInterface
     {
+        $router   = $container->get(RouterInterface::class);
         $template = $container->get(TemplateRendererInterface::class);
 
-        return new MainHandler($container, $template);
+        return new MainHandler($container, $router, $template);
     }
 }

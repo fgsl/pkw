@@ -38,7 +38,13 @@ class LoginHandler implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
-        User::start($this->container);
-        return new RedirectResponse($this->router->generateUri('app.main'));
+        $parsedBody = $request->getParsedBody();
+        $username = $parsedBody['username'] ?? null;
+        $password = $parsedBody['password'] ?? null;
+        if (!is_null($username) && !is_null($password) && User::isAuthorized($username,$password, $this->container)){
+            User::start($this->container);
+            return new RedirectResponse($this->router->generateUri('app.main'));
+        }
+        return new RedirectResponse($this->router->generateUri('home'));
     }
 }

@@ -40,4 +40,5 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
     $app->get('/api/ping', App\Handler\PingHandler::class, 'api.ping');
     $app->post('/namespace', App\Handler\NamespaceHandler::class, 'app.namespace');
     $app->post('/resourcequota', App\Handler\ResourceQuotaHandler::class, 'app.resourcequota');
+    $app->post('/pods', App\Handler\PodsHandler::class, 'app.pods');
 };
