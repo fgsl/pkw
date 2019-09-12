@@ -17,15 +17,26 @@ $this->headScript(HeadScript::SCRIPT)->appendScript($script);
 	</h1>
 
 	<div class="row">
+		<?php include 'detailed-partial.phtml';?>
 		<?php include 'namespace-partial.phtml';?>
-		<?php include 'resourcequota-partial.phtml';?>
-		<?php include 'pods-partial.phtml';?>
+		<?php include 'resourcequota-partial.phtml';?>		
 	</div>
+	<div class="row">
+		<?php include 'volumes-partial.phtml';?>
+		<?php include 'replicasets-partial.phtml';?>
+		<?php include 'pods-partial.phtml';?>		
+	</div>
+
 	<div class="row blackbox">
 		<div id="general-result">
 			<p id="paragraph-result">
 				<code></code>
 			</p>
 		</div>
+	</div>
+
+	<div class="row">
+		<?php include 'create-pods-partial.phtml';?>
+        <?php include 'delete-pods-partial.phtml';?>
 	</div>
 </div>

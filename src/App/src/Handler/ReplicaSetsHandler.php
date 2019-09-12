@@ -15,27 +15,16 @@ use Zend\Diactoros\Response\JsonResponse;
 
 use function time;
 use Fgsl\Kubectl\KubectlProxy;
-use Fgsl\Kubectl\KubernetesPods;
 
-class PodsHandler implements RequestHandlerInterface
+class ReplicaSetsHandler implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request) : ResponseInterface
     {
         try {
-            if (isset($_FILES['yaml'])){
-                $output = KubernetesPods::create(file_get_contents($_FILES['yaml']['tmp_name']));
-                goto response;
-            }            
             $parsedBody = $request->getParsedBody();
             $namespace = $parsedBody['namespace'];
-            if (isset($parsedBody['module'])){
-                $module = $parsedBody['module'];
-                $output = KubernetesPods::delete($namespace, $module);
-                goto response;
-            }            
-            $object = (bool) ($parsedBody['pods-object'] ?? false);
-            $showLabels = (bool) ($parsedBody['pods-labels'] ?? false);
-            $output = KubectlProxy::getPods($namespace, $object, $showLabels)->__toString();            
+            $object = (bool) ($parsedBody['replicasets-object'] ?? false);
+            $output = KubectlProxy::getReplicaSets($namespace, $object)->__toString();            
         } catch (\Exception $e) {
             $output = $e->getMessage();
         }

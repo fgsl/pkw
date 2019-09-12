@@ -41,4 +41,40 @@ $(document).ready(function(){
     $("button.clear_result_button").click(function(){
         $( "div#general-result p#paragraph-result code" ).html( "" );       
     });    
+  //create-pod
+    $("button.create_pod_button").click(function(){
+    	$( "div#general-result p#paragraph-result code" ).html("Wait...");
+    	var fd = new FormData();
+    	var files = $("input#yaml")[0].files[0];
+    	fd.append("yaml",files);
+    	
+        $.ajax({
+        	url: "pod",
+        	type: "post",
+        	data: fd,
+        	contentType: false,
+        	processData: false,
+        	success: function( data ) {
+        		$( "div#general-result p#paragraph-result code" ).html( data.output );
+        	},
+        	error: function () {
+        		$( "div#general-result p#paragraph-result code" ).html("An error occurred" );
+        	}
+        });
+    });
+    //delete-pod
+    $("button.delete_pod_button").click(function(){
+    	$( "div#general-result p#paragraph-result code" ).html("Wait...");
+        $.ajax({
+        	url: "pod",
+        	type: "post",
+        	data: $("form#form-delete-pod").serialize(),
+        	success: function( data ) {
+        		$( "div#general-result p#paragraph-result code" ).html( data.output );
+        	},
+        	error: function () {
+        		$( "div#general-result p#paragraph-result code" ).html("An error occurred" );
+        	}
+        });
+    });    
 });
